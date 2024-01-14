@@ -1,5 +1,12 @@
 <script>
   export let error;
+
+  const errorMessages = {
+    "auth/weak-password": "Password should be at least 6 characters.",
+    "auth/email-already-in-use": "This email is already in use.",
+  }
+  // Clean up error message from Firebase to make it user-facing
+  const errorMessage = errorMessages[error.code] || "Sorry, there was a problem!";
 </script>
 
-<div>ERROR: {error}</div>
+<div role="alert">{errorMessage}</div>

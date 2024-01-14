@@ -1,7 +1,6 @@
 <script>
-  import { user } from '../stores/authStore';
 	import Auth from '$lib/Auth.svelte';
 </script>
 
-
-<Auth />
+<h1>Home page</h1>
+<Auth signup={false} />

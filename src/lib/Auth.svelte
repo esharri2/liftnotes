@@ -1,5 +1,5 @@
 <script>
-  import Error from "./Error.svelte";
+  import Error from './Error.svelte';
   import { authHandlers, user } from '../stores/authStore';
 
   export let signup;
@@ -9,8 +9,13 @@
   let confirmPassword = '';
   let error = '';
 
+  if ($user) {
+    window.location.href = '/dashboard';
+  }
+
   async function handleSubmit() {
     if (!email || !password || (signup && !confirmPassword)) {
+      // TODO set error?
       return;
     }
 
@@ -24,12 +29,9 @@
       try {
         await authHandlers.login(email, password);
       } catch (err) {
-        console.log("There is an error: ", err);
         error = err;
       }
     }
-
-    // update store
 
     if ($user) {
       window.location.href = '/dashboard';
@@ -42,16 +44,16 @@
   <form>
     <label>
       Email
-      <input bind:value={email} type="email" placeholder="Email" />
+      <input bind:value={email} type="email" placeholder="Email" required />
     </label>
     <label>
       Password
-      <input bind:value={password} type="password" placeholder="Password" />
+      <input bind:value={password} type="password" placeholder="Password" required />
     </label>
     {#if signup}
       <label>
         Confirm Password
-        <input bind:value={confirmPassword} type="text" placeholder="password" />
+        <input bind:value={confirmPassword} type="password" placeholder="Password" required />
       </label>
     {/if}
     <button on:click={handleSubmit}>Submit</button>
@@ -65,5 +67,7 @@
       Don't have an account? <a href="/signup">Sign up</a>
     </div>
   {/if}
-  <Error error={error}/>
+  {#if error}
+    <Error {error} />
+  {/if}
 </div>

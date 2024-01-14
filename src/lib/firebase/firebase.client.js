@@ -2,6 +2,8 @@
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+
 import { getAuth } from 'firebase/auth';
 
 // Your web app's Firebase configuration
@@ -14,7 +16,6 @@ const firebaseConfig = {
 	appId: import.meta.env.VITE_APPID
 };
 
-// Initialize Firebase
 // let firebaseApp;
 // if (!getApps().length) {
 // 	firebaseApp = initializeApp(firebaseConfig);
@@ -23,7 +24,10 @@ const firebaseConfig = {
 // 	deleteApp(firebaseApp);
 // 	firebaseApp = initializeApp(firebaseConfig);
 // }
-
+// Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
+
 export const auth = getAuth(firebaseApp);
+
+export const db = getFirestore(firebaseApp);
