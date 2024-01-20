@@ -1,34 +1,28 @@
-import { writable } from 'svelte/store';
 import { auth } from '../lib/firebase/firebase.client';
 import {
-	createUserWithEmailAndPassword,
-	sendPasswordResetEmail,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
-	signOut,
-	updateEmail,
-	updatePassword
+  signOut,
+  updateEmail,
+  updatePassword
 } from 'firebase/auth';
 
-import { createUserInDB } from '../lib/api';
-
-export const user = writable(null);
-export const loadingAuth = writable(true);
+import { createUserInDB } from '$lib/api';
 
 export const authHandlers = {
   signup: async (email, password) => {
     // Creates authentication record
-    const userData = await createUserWithEmailAndPassword(auth, email, password);
-    const user = await createUserInDB(email);
-    user.update(() => userData);
+    await createUserWithEmailAndPassword(auth, email, password);
+    // Creates user doc in DB where we store all the stuff
+    await createUserInDB(email);
   },
   login: async (email, password) => {
-    const userData = await signInWithEmailAndPassword(auth, email, password);
-    user.update(() => userData);
+    await signInWithEmailAndPassword(auth, email, password);
   },
   logout: async () => {
     await signOut(auth);
     window.location.href = '/';
-    user.update(() => null);
   },
   resetPassword: async (email) => {
     await sendPasswordResetEmail(auth, email);

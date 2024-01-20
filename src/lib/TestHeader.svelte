@@ -1,15 +1,8 @@
 <script>
-  import { onMount } from 'svelte';
-  import { auth } from '$lib/firebase/firebase.client';
-  import { user, loadingAuth, authHandlers } from '../stores/authStore';
+  import { authState, loadingAuth, user } from '$lib/stores';
+  import { authHandlers } from "$lib/auth";
 
-  onMount(() => {
-    auth.onAuthStateChanged((userData) => {
-      loadingAuth.update(() => false);
-      console.log("auth state changed, user data is: ", userData);
-      user.update(() => userData);
-    });
-  });
+  console.log("test header user: ", $user);
 </script>
 
 <a href="/">Sveltekit + Firebase Clientside Auth</a>
@@ -23,7 +16,7 @@
     <button on:click={authHandlers.logout}>Log out</button>
     <a href="/dashboard">Dashboard</a>
     <a href="/settings">Settings</a>
-  {/if}
+  {/if} 
 </div>
 
 <hr />

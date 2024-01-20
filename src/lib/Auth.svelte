@@ -1,6 +1,7 @@
 <script>
   import Error from './Error.svelte';
-  import { authHandlers, user } from '../stores/authStore';
+  import { authState } from '$lib/stores';
+  import { authHandlers } from './auth';
 
   export let signup;
 
@@ -9,7 +10,7 @@
   let confirmPassword = '';
   let error = '';
 
-  if ($user) {
+  if ($authState) {
     window.location.href = '/dashboard';
   }
 
@@ -33,7 +34,7 @@
       }
     }
 
-    if ($user) {
+    if ($authState) {
       window.location.href = '/dashboard';
     }
   }

@@ -1,11 +1,18 @@
 <script>
-  import { get } from 'svelte/store';
-  import { authHandlers, user } from '../../stores/authStore';
+  import { user } from '$lib/stores';
+  import Exercises from "$lib/Exercises.svelte"
 
   // const userData = get(user);
   console.log("settings", $user);
 </script>
 
-
 <h1>Settings</h1>
+
+<h2>Preferences</h2>
+<p>weight? etc</p>
+
+<h2>Your exercises</h2>
+<Exercises/>
+
+
 
