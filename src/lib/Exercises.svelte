@@ -3,8 +3,8 @@
   import ExerciseForm from '$lib/ExerciseForm.svelte';
   import { deleteExercise } from '$lib/api';
 
-  let adding = false;
-  let editing = false;
+  let adding = false; // Boolean
+  let editing = false; // Index of exercise being edited
 
   let { exercises } = user;
   user.subscribe((value) => {
@@ -16,9 +16,8 @@
   <ExerciseForm
     bind:adding
     bind:editing
-    defaultName={exercises[editing].name}
-    defaultSets={exercises[editing].sets}
-    defaultReps={exercises[editing].reps} />
+    startingValues={exercises[editing]}
+     />
 {:else}
   {#if adding}
     <ExerciseForm bind:adding bind:editing />

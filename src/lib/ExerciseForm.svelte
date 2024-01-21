@@ -1,27 +1,34 @@
 <script>
-  import { addExercise } from "$lib/api";
-  export let adding;
-  export let editing;
-  export let defaultName;
-  export let defaultSets;
-  export let defaultReps;
-  let name = defaultName || '';
-  let sets = defaultSets || 3;
-  let reps = defaultReps || 5;
+  import { addExercise, updateExercise } from '$lib/api';
+  export let adding = false;
+  export let editing = false;
+  export let startingValues = {};
 
-  let updating = false;
+  const { name: startingName, sets: startingSets, reps: startingReps, id } = startingValues;
 
-  const handleSubmit = (event) => {
+  let name = startingName || '';
+  let sets = startingSets || 3;
+  let reps = startingReps || 5;
+
+  let saving = false;
+
+  const reset = () => {
+    adding = false;
+    editing = false;
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-  
-    updating = true;
-    if (editing) {
-      // update
+    saving = true;
+    console.log('handle submit, editing?', editing);
+    if (editing >= 0) {
+      await updateExercise({ name, sets, reps, id });
     } else {
-      addExercise({name, sets, reps} )
+      await addExercise({ name, sets, reps });
     }
-    updating = false;
-  }
+    saving = false;
+    reset();
+  };
 </script>
 
 <form on:submit={handleSubmit}>
@@ -36,12 +43,5 @@
     Reps <input type="number" bind:value={reps} placeholder="Reps" />
   </label>
   <button type="submit">Save</button>
-  <button
-    type="button"
-    on:click={() => {
-      adding = false;
-      editing = false;
-    }}>
-    Cancel
-  </button>
+  <button type="button" on:click={reset}>Cancel</button>
 </form>
