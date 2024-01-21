@@ -21,9 +21,12 @@
     event.preventDefault();
     saving = true;
     console.log('handle submit, editing?', editing);
-    if (editing >= 0) {
+    console.log(editing>=0);
+    if (typeof editing === "number" && editing >= 0) {
+      console.log("UP")
       await updateExercise({ name, sets, reps, id });
     } else {
+      console.log("ADD")
       await addExercise({ name, sets, reps });
     }
     saving = false;
