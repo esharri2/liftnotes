@@ -6,10 +6,12 @@ import { uuid } from './helpers';
 // Keep up-to-date values from store to use in API calls
 let email;
 let exercises;
+let workouts;
 
 user.subscribe((value) => {
   email = value?.email;
   exercises = value?.exercises;
+  workouts = value?.workouts;
 });
 
 const getUserRef = async (email) => doc(db, 'users', email);
