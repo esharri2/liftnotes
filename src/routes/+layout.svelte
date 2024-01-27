@@ -8,11 +8,8 @@
 
   onMount(() => {
     auth.onAuthStateChanged(async (data) => {
-      console.log('auth state changed: ', data);
       if (data && data.email) {
         const userData = await getUser(data.email);
-        console.log('updating user store... ', userData);
-
         user.update(() => userData);
       }
       authState.update(() => data);

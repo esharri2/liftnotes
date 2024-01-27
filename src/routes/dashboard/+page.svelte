@@ -1,15 +1,8 @@
 <script>
-  import { db } from '$lib/firebase/firebase.client';
-  import { doc, setDoc } from "firebase/firestore"; 
-
-  const saveData = async () => {
-    // Add a new document in collection "cities"
-    await setDoc(doc(db, 'cities', 'LA'), {
-      name: 'Los Angelessssss',
-      state: 'CA',
-      country: 'USA'
-    });
-  };
+  import Workouts from '$lib/Workouts.svelte';
 </script>
 
-<button on:click={saveData}>Save</button>
+<h1>Dashboard</h1>
+<a href="/workout">Log a workout</a>
+<Workouts />
+

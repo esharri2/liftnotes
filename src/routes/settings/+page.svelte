@@ -1,9 +1,6 @@
 <script>
   import { user } from '$lib/stores';
   import Exercises from "$lib/Exercises.svelte"
-
-  // const userData = get(user);
-  console.log("settings", $user);
 </script>
 
 <h1>Settings</h1>

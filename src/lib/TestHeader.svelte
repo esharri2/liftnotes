@@ -1,8 +1,6 @@
 <script>
   import { authState, loadingAuth, user } from '$lib/stores';
   import { authHandlers } from "$lib/auth";
-
-  console.log("test header user: ", $user);
 </script>
 
 <a href="/">Sveltekit + Firebase Clientside Auth</a>
