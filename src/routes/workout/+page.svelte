@@ -1,5 +1,5 @@
 <script>
-  import WorkoutForm from "$lib/WorkoutForm.svelte";
+  import WorkoutForm from "$lib/WorkoutForm/index.svelte";
 </script>
 
 <!-- TODO maybe editing comes from url param? -->
