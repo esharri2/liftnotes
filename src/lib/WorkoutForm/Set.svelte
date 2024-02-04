@@ -1,23 +1,11 @@
 <script>
+  export let activityId;
   export let activityIndex;
-  export let setIndex;
-  export let rep;
   export let handleRemoveSet;
+  export let predictReps;
+  export let rep;
   export let set;
-
-  console.log("HERES THE set: ", set);
-
-  import { user } from '$lib/stores';
-
-  let exercises = [];
-  let workouts = [];
-  let unit = 'lbs';
-
-  user.subscribe((value) => {
-    exercises = value.exercises || exercises;
-    workouts = value.workouts || workouts;
-    unit = value.preferences?.unit || unit;
-  });
+  export let setIndex;
 
   const handleAddRep = () => {
     set = [...set, rep];
@@ -27,14 +15,17 @@
     set.pop();
     set = [...set];
   };
+
+  const handleInput = (repIndex, rep) => {
+    const { weight, unit } = rep;
+    predictReps({ weight, unit }, activityId, setIndex, repIndex);
+  };
 </script>
 
 <h4>Set {setIndex + 1}</h4>
 {#each set as rep, index}
   <label>
-    Rep {index + 1}
-    Weight: {rep.weight + " " + rep.unit}
-    <input type="number" bind:value={set[index].weight} />
+    <input type="number" step=".001" bind:value={rep.weight} on:change={(event) => handleInput(index, rep)} />
   </label>
 {/each}
 <div>

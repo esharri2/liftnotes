@@ -82,25 +82,27 @@ const deleteExercise = async (exercise) => {
   await syncUserToStore();
 };
 
-const addWorkout = async (workout) => {
-  workout.id = uuid();
+const upsertWorkout = async (workout) => {
   const userRef = await getUserRef(email);
-  await updateDoc(userRef, {
-    workouts: arrayUnion(workout)
-  });
-  await syncUserToStore();
-};
 
-const updateWorkout = async (updatedWorkout) => {
-  const index = workouts.findIndex((workout) => workout.id === updatedWorkouts.id);
-  if (index === -1) {
-    console.error('updateWorkout error: Could not find workout with this id.');
+  if (workout.id) {
+    let updatedWorkout = workout;
+    const index = workouts.findIndex((workout) => workout.id === updatedWorkout.id);
+    if (index === -1) {
+      console.error('updateWorkout error: Could not find workout with this id.');
+    }
+    workouts[index] = updatedWorkout;
+    const userRef = await getUserRef(email);
+    await updateDoc(userRef, {
+      workouts
+    });
+  } else {
+    workout.id = uuid();
+    await updateDoc(userRef, {
+      workouts: arrayUnion(workout)
+    });
   }
-  workouts[index] = updatedWorkout;
-  const userRef = await getUserRef(email);
-  await updateDoc(userRef, {
-    workouts
-  });
+
   await syncUserToStore();
 };
 
@@ -114,11 +116,10 @@ const deleteWorkout = async (workout) => {
 
 export {
   addExercise,
-  addWorkout,
   createUserInDB,
   deleteExercise,
   deleteWorkout,
   getUser,
   updateExercise,
-  updateWorkout
+  upsertWorkout
 };

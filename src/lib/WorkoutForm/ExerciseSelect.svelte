@@ -9,11 +9,14 @@
   const handleExerciseSelection = (event, index) => {
     const { name, reps, sets } = exercises.find(({ id }) => id === event.target.value);
     activities[index].exercise = name;
-    activities[index].sets = generateArray(sets).map((set) =>
-      generateArray(reps).map(() => {
-        return { ...rep, id: uuid() };
-      })
-    );
+    activities[index].sets = generateArray(sets).map((set) => {
+     return {
+        set: generateArray(reps).map(() => {
+          return { ...rep, id: uuid() };
+        }),
+        id: uuid()
+      }
+    });
   };
 </script>
 

@@ -1,8 +1,9 @@
 <script>
+  // Default to current day
   export let date;
 </script>
 
 <label>
   Date:
-  <input type="date" bind:value={date} />
+  <input required type="date" bind:value={date} />
 </label>
