@@ -1,10 +1,11 @@
 <script>
-  import TestHeader from '$lib/TestHeader.svelte';
+  import '$lib/styles/main.css';
 
   import { onMount } from 'svelte';
   import { auth } from '$lib/firebase/firebase.client';
   import { authState, loadingAuth, user } from '$lib/stores';
   import { getUser } from '$lib/api';
+  import Header from '$lib/Header.svelte';
 
   onMount(() => {
     auth.onAuthStateChanged(async (data) => {
@@ -18,8 +19,13 @@
   });
 </script>
 
-<TestHeader />
-{#if $loadingAuth}
-  loading
-{:else}
-  <slot />{/if}
+<Header />
+<main>
+  {#if $loadingAuth}
+    loading
+  {:else}
+    <slot />
+  {/if}
+</main>
+
+

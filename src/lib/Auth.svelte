@@ -40,35 +40,33 @@
   }
 </script>
 
-<div>
-  <h1>{signup ? 'Sign up' : 'Login'}</h1>
-  <form>
-    <label>
-      Email
-      <input bind:value={email} type="email" placeholder="Email" required />
-    </label>
-    <label>
-      Password
-      <input bind:value={password} type="password" placeholder="Password" required />
-    </label>
-    {#if signup}
-      <label>
-        Confirm Password
-        <input bind:value={confirmPassword} type="password" placeholder="Password" required />
-      </label>
-    {/if}
-    <button on:click={handleSubmit}>Submit</button>
-  </form>
+<h2 class="h2">{signup ? 'Sign up' : 'Have an account? Login.'}</h2>
+<form class="flow">
+  <label>
+    Email
+    <input bind:value={email} type="email" placeholder="Email" required />
+  </label>
+  <label>
+    Password
+    <input bind:value={password} type="password" placeholder="Password" required />
+  </label>
   {#if signup}
-    <div>
-      Already have an account? <a href="/login">Log in</a>
-    </div>
-  {:else}
-    <div>
-      Don't have an account? <a href="/signup">Sign up</a>
-    </div>
+    <label>
+      Confirm Password
+      <input bind:value={confirmPassword} type="password" placeholder="Password" required />
+    </label>
   {/if}
-  {#if error}
-    <Error {error} />
-  {/if}
-</div>
+    <button class="button" on:click={handleSubmit}>Submit</button>
+    {#if signup}
+      <div>
+        Already have an account? <a href="/login">Log in</a>
+      </div>
+    {:else}
+      <div>
+        Don't have an account? <a href="/signup">Sign up</a>
+      </div>
+    {/if}
+    {#if error}
+      <Error {error} />
+    {/if}
+</form>

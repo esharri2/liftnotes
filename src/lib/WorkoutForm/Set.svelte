@@ -29,14 +29,14 @@
   </label>
 {/each}
 <div>
-  <button type="button" on:click={() => handleAddRep(activityIndex, setIndex)}>Add rep</button>
-  <button
+  <button class="button" type="button" on:click={() => handleAddRep(activityIndex, setIndex)}>Add rep</button>
+  <button class="button"
     disabled={set.length < 2}
     type="button"
     on:click={() => handleRemoveRep(activityIndex, setIndex)}>
     Remove rep
   </button>
-  <button type="button" on:click={() => handleRemoveSet(activityIndex, setIndex)}>
+  <button class="button" type="button" on:click={() => handleRemoveSet(activityIndex, setIndex)}>
     Delete this set
   </button>
 </div>

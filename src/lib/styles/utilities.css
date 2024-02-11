@@ -1,0 +1,30 @@
+/* Full page horizontally and vertically centered content */
+.center-full {
+  align-items: center;
+  display: flex;
+  height: 100svh;
+  justify-content: center;
+
+}
+.center-full > * {
+  width: 100%;
+} 
+
+/* Even spacing */
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+}
+
+/* Max width utils */
+.narrow-w {
+  max-width: 500px;
+}
+
+.medium-w {
+  max-width: 769px;
+}
+
+/* Transition */
+.transition {
+  transition: var(--default-transition);
+}

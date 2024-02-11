@@ -1,0 +1,106 @@
+:root {
+  --font-body: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;;
+  --color-dark: #00272B;
+  --color-dark-secondary: #BAC2CA;
+  --color-light: #EEF0F2;
+  --color-accent: #FFA400;
+  --color-accent-3: #988F2A;
+  --color-text: --color-dark;
+  --default-transition:  all .2s ease-in-out;
+  --header-height: 40px;
+  --radius: 4px;
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  background-color: var(--color-light);
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 769px;
+  min-height: 100vh;
+  padding-top: var(--header-height);
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  margin: 0 16px;
+}
+
+input,
+button {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Forms */
+
+input {
+  background-color: var(--color-light);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-dark-secondary);
+  display: block;
+  padding: 6px;
+  width: 100%;
+}
+
+label {
+  display: block;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+
+
+
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}

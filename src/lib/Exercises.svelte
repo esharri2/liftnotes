@@ -19,7 +19,7 @@
   {#if adding}
     <ExerciseForm bind:adding bind:editing />
   {:else}
-    <button
+    <button class="button"
       on:click={() => {
         adding = true;
       }}>
@@ -41,13 +41,13 @@
               {/each}
             </div>
           {/if}
-          <button
+          <button class="button"
             on:click={() => {
               editing = index;
             }}>
             Edit
           </button>
-          <button
+          <button class="button"
             on:click={async () => {
               await deleteExercise(exercises[index]);
             }}>

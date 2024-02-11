@@ -1,0 +1,22 @@
+.button {
+  background-color: var(--color-accent);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--color-dark);
+  display: block;
+  font-weight: 600;
+  padding: 6px 8px;
+  text-transform: uppercase;
+  transition: var(--default-transition);
+  width: 100%;
+}
+
+.button:hover {
+  filter: brightness(90%);
+  letter-spacing: 1px;
+}
+
+.button:active {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  filter: brightness(80%);
+}

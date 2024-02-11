@@ -11,7 +11,7 @@
     {$user ? `User: ${$user.email}` : 'You are not logged in.'}
   {/if}
   {#if $user}
-    <button on:click={authHandlers.logout}>Log out</button>
+    <button class="button" on:click={authHandlers.logout}>Log out</button>
     <a href="/dashboard">Dashboard</a>
     <a href="/settings">Settings</a>
   {/if} 

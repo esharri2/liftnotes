@@ -64,7 +64,7 @@
           bind:value={warmup[index].percent}
           placeholder="Percent" />
       </label>
-      <button
+      <button class="button"
         type="button"
         on:click={() => {
           warmup = warmup.toSpliced(index, 1);
@@ -73,7 +73,7 @@
       </button>
     </div>
   {/each}
-  <button
+  <button class="button"
     type="button"
     on:click={() => {
       warmup = [...warmup, { reps: 5, percent: 50 }]
@@ -82,7 +82,7 @@
   </button>
 
   <div>
-    <button disabled={saving} type="submit">{saving ? 'Wait' : 'Save'}</button>
-    <button type="button" on:click={reset}>Cancel</button>
+    <button class="button" disabled={saving} type="submit">{saving ? 'Wait' : 'Save'}</button>
+    <button class="button" type="button" on:click={reset}>Cancel</button>
   </div>
 </form>

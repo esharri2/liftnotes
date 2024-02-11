@@ -1,0 +1,14 @@
+.logo {
+  color: var(--color-accent);
+  font-size: 3rem;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.logo span {
+  display: inline-block;
+  font-weight: 200;
+  transform: translateX(-8px);
+}

@@ -110,16 +110,16 @@
           {setIndex}
           rep={DEFAULT_REP} />
       {/each}
-      <button type="button" on:click={() => handleAddSet(activityIndex)}>add a set</button>
+      <button class="button" type="button" on:click={() => handleAddSet(activityIndex)}>add a set</button>
     {/if}
   {/each}
   <hr />
   <div>
-    <button type="button" on:click={handleAddActivity}>Add another activity</button>
+    <button class="button" type="button" on:click={handleAddActivity}>Add another activity</button>
   </div>
 
   <div>
-    <button disabled={saving} type="submit">{saving ? 'Wait' : 'Save'}</button>
+    <button class="button" disabled={saving} type="submit">{saving ? 'Wait' : 'Save'}</button>
     <a href="/dashboard">Cancel</a>
   </div>
 </form>
